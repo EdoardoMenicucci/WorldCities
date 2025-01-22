@@ -27,19 +27,26 @@ namespace WorldCities.Server.Controllers
             int pageIndex = 0,
             int pageSize = 10,
             string? sortColumn = null,
-            string? sortOrder = null)            
+            string? sortOrder = null,
+            string? filterColumn = null,
+            string? filterQuery = null)
         {
+            // first we perform the filtering...
+            IQueryable<City> cities = _context.Cities;
+            if (!string.IsNullOrEmpty(filterColumn)
+            && !string.IsNullOrEmpty(filterQuery))
+            {
+                cities = cities.Where(c => c.Name.StartsWith(filterQuery));
+            }
 
-            //
             return await ApiResult<City>.CreateAsync(
-                _context.Cities.AsNoTracking(),
-                pageIndex,
-                pageSize,
-                sortColumn,
-                sortOrder
-                );
-
-
+               cities,
+               pageIndex,
+               pageSize,
+               sortColumn,
+               sortOrder,
+               filterColumn,
+               filterQuery);
         }
 
         // GET: api/Cities/5
