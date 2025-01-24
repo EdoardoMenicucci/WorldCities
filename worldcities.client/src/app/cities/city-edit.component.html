@@ -29,17 +29,18 @@
         <mat-label>Latitude:</mat-label>
         <input matInput formControlName="lat" required
                placeholder="Insert latitude">
-        <mat-error *ngIf="form.controls['lat'].errors?.['required']">
-          Latitude is required.
+        <mat-error *ngFor="let error of getErrors(form.get('lat')!, 'Latitude', { 'pattern': 'requires a positive or negative number with 0-4 decimal values' })">
+          {{error}}
         </mat-error>
+
       </mat-form-field>
       <!-- Lon -->
       <mat-form-field>
         <mat-label>Longitude:</mat-label>
         <input matInput formControlName="lon" required
                placeholder="Insert longitude">
-        <mat-error *ngIf="form.controls['lon'].errors?.['required']">
-          Longitude is required.
+        <mat-error *ngFor="let error of getErrors(form.get('lon')!, 'Longitude', { 'pattern': 'requires a positive or negative number with 0-4 decimal values' })">
+          {{error}}
         </mat-error>
       </mat-form-field>
 
@@ -64,12 +65,22 @@
           {{ this.id ? "Save" : "Create" }}
         </button>
         <button mat-flat-button color="secondary"
-                [routerLink]="['/cities']">
+                [routerLink]="['/cities']">s
           Cancel
         </button>
       </div>
     </div>
-
+    <!-- Form activity log panel -->
+    <div class="info">
+      <div class="info-header">Form Activity Log</div>
+      <div class="info-body">
+        <div class="info-value">
+          <span *ngIf="activityLog"
+                [innerHTML]="activityLog">
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
 
 </form>

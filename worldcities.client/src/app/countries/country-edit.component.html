@@ -30,6 +30,7 @@
       <mat-error *ngIf="form.controls['iso2'].errors?.['isDupeField']">
         This code already exists: please choose another.
       </mat-error>
+      <mat-error *ngFor="let e of getErrors(form.get('iso2')!, 'ISO2', {'pattern': 'requires 2 letters'})"> </mat-error>
     </mat-form-field>
     <!-- ISO3 -->
     <mat-form-field>
@@ -47,6 +48,7 @@
       <mat-error *ngIf="form.controls['iso3'].errors?.['isDupeField']">
         This code already exists: please choose another.
       </mat-error>
+      <mat-error *ngFor="let e of getErrors(form.get('iso3')!, 'ISO3', {'pattern': 'requires 3 letters'})"> </mat-error>
     </mat-form-field>
     <div>
       <button mat-flat-button color="primary"
