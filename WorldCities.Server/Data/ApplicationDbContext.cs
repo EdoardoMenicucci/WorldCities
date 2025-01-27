@@ -4,7 +4,7 @@ using WorldCities.Server.Data.Models;
 
 namespace WorldCities.Server.Data
 {
-    public class ApplicationDbContext : DbContext 
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext() : base()
         {
@@ -40,8 +40,8 @@ namespace WorldCities.Server.Data
 
         public DbSet<City> Cities => Set<City>();
         public DbSet<Country> Countries => Set<Country>();
-       
+
     }
 
-    
-    }
+
+}

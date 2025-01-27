@@ -1,7 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using WorldCities.Server.Data.Models;
-
-namespace WorldCities.Server.Controllers
+﻿namespace WorldCities.Server.Controllers
 {
     public class CityDTO
     {
