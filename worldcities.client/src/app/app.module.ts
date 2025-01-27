@@ -12,14 +12,17 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { CountriesComponent } from './countries/countries.component';
 
 //Reactiv form module NG
-
 import { ReactiveFormsModule } from '@angular/forms';
+
+//components edits
 import { CityEditComponent } from './cities/city-edit.component';
 import { CountryEditComponent } from './countries/country-edit.component';
 
-
-//servivce
+//servivces
 import { CityService } from './cities/city.service';
+import { CountryService } from './countries/country.service';
+import { AuthService } from './auth/auth.service';
+import { LoginComponent } from './auth/login.component';
 
 
 @NgModule({
@@ -30,7 +33,8 @@ import { CityService } from './cities/city.service';
     CitiesComponent,
     CountriesComponent,
     CityEditComponent,
-    CountryEditComponent
+    CountryEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +44,7 @@ import { CityService } from './cities/city.service';
     AngularMaterialModule,
     ReactiveFormsModule
   ],
-  providers: [CityService],
+  providers: [CityService, CountryService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,7 +22,7 @@ export class CountryService
     sortOrder: string,
     filterColumn: string | null,
     filterQuery: string | null
-  ): Observable<ApiResult<Country>> {
+    ): Observable<ApiResult<Country>> {
     var url = this.getUrl("api/Countries");
     var params = new HttpParams()
       .set("pageIndex", pageIndex.toString())
